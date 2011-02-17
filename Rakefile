@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "mongoid_uniquify"
   gem.homepage = "http://github.com/kichiro/mongoid_uniquify"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Generate a unique token with Mongoid}
+  gem.description = %Q{Generate a unique token with Mongoid}
   gem.email = "kichiro@yomukaku.net"
   gem.authors = ["Kichiro IKEMOTO"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
