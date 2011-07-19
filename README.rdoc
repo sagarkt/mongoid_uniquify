@@ -1,16 +1,47 @@
 = mongoid_uniquify
 
-Description goes here.
+Generate unique token in a Mongoid field. Mongoid version of Ryan Bates uniquify gem. 
 
-== Contributing to mongoid_uniquify
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+== Installation
+
+  gem install mongoid_uniquify
+
+In your Gemfile
+
+  gem "mongoid_uniquify"
+
+== REQUIREMENTS:
+
+* mongoid 2.0.0 or later
+
+== USAGE:
+
+  class Project
+    include Mongoid::Document
+    include Mongoid::Uniquify
+  
+    uniquify :token, :length => 7, :chars => ('a'..'z').to_a + ('0'..'9').to_a
+  
+    field :token, :type => String
+  
+    # ...
+  end
+
+If you want to use generated token as key and add unique index, do something like below.
+
+  class Project
+    include Mongoid::Document
+    include Mongoid::Uniquify
+  
+    uniquify :token, :length => 7, :chars => ('a'..'z').to_a + ('0'..'9').to_a
+  
+    field :token, :type => String
+    key :token
+  
+    index :token, :unique => true
+  
+    # ...
+  end
 
 == Copyright
 
