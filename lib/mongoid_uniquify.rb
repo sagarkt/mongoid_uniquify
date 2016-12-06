@@ -7,7 +7,7 @@ module Mongoid #:nodoc:
     def ensure_unique(name)
       begin
         self[name] = yield
-      end while self.class.where(:conditions => {name => self[name]})
+      end while self.class.where(:conditions => {name => self[name]}).first
     end
 
     module ClassMethods
