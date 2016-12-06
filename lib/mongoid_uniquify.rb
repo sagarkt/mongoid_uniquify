@@ -3,11 +3,11 @@ module Mongoid #:nodoc:
     def self.included(base)
       base.extend ClassMethods
     end
-    
+
     def ensure_unique(name)
       begin
         self[name] = yield
-      end while self.class.first(:conditions => {name => self[name]})
+      end while self.class.where(:conditions => {name => self[name]})
     end
 
     module ClassMethods
